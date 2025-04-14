@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="hero-container">
+        <div class="background-overlay"></div>
+        <div class="retro-grid"></div>
+        <section class="hero-content">
+            <div class="text-content">
+                <h1 class="title">Track Prices Effortlessly</h1>
+                <h2 class="subtitle">
+                    Monitor your products with
+                    <span class="gradient-text">real-time updates.</span>
+                </h2>
+                <p class="description">
+                    Enter a Flipkart URL and target price to get notified when the price drops.
+                </p>
+                <div class="form-container">
+                    <form method="POST" action="/">
+                        <div class="form-group">
+                            <label for="product_url">Product URL</label>
+                            <input type="text" id="product_url" name="product_url" placeholder="Enter Flipkart product URL" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="target_price">Target Price (₹)</label>
+                            <input type="number" id="target_price" name="target_price" placeholder="Enter target price" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email (Optional)</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="cta-button">
+                            <span class="cta-inner">Track Price</span>
+                        </button>
+                    </form>
+                </div>
+                {% if message %}
+                    <div class="message success">{{ message }}</div>
+                {% endif %}
+                {% if error %}
+                    <div class="message error">{{ error }}</div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</body>
+</html>
